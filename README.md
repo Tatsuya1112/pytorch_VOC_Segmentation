@@ -4,6 +4,18 @@ Pascal VOC2012のデータをpytorchを用いてSemantic Segmentationします�
 
 ![18](https://user-images.githubusercontent.com/45190789/78622440-1c2d3480-78c0-11ea-8ac0-19121c5b1b0e.png)
 
+```
+pytorch_VOC_Segmentation/
+　├ train.py
+　├ test.py
+　├ loss.py
+　├ utils.py
+　├ data/
+　└ output/
+　    ├ train/
+　    └ val/
+```
+
 # Requirements
 
 ```  
