@@ -10,6 +10,7 @@ pytorch_VOC_Segmentation/
 　├ test.py
 　├ loss.py
 　├ utils.py
+　├ preprocess.py
 　├ data/
 　└ output/
 　    ├ train/
