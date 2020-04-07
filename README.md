@@ -1,6 +1,8 @@
 # pytorch_VOC_Segmentation
 
-![あ無qqs](https://user-images.githubusercontent.com/45190789/77528170-cbd1d200-6ed0-11ea-8954-203884445987.png)
+Pascal VOC2012のデータをpytorchを用いてSemantic Segmentationします。
+
+![18](https://user-images.githubusercontent.com/45190789/78622440-1c2d3480-78c0-11ea-8ac0-19121c5b1b0e.png)
 
 # Requirements
 
@@ -23,6 +25,8 @@ testset = torchvision.datasets.MNIST(root='./data', download=True, train=False, 
 ```
 
 # Models
+
+COCO train2017で訓練済みのdeeplabv3_resnet101を用います。
 
 ### TwoLayerNet
 
