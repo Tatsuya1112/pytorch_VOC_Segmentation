@@ -33,7 +33,7 @@ torchvisionよりCOCO train2017で訓練済みのdeeplabv3_resnet101をダウン
 net = torchvision.models.segmentation.deeplabv3_resnet101(pretrained=True, progress=True, num_classes=21, aux_loss=True)
 ```
 
-classifier層と、aux_classifier層の最後のConv2dの部分を初期化します。
+classifier層と、aux_classifier層の最後のConv2dの部分を初期化して、学習し直します。
 
 ```python
 def init_weights(m):
@@ -48,14 +48,13 @@ net.aux_classifier[4].apply(init_weights)
 
 # Loss
 
-(classification層からの出力のクロスロピーロス)　+ (aux_classification層の出力のクロスエントロピーロス*0.4)
+(classification層の出力のクロスエントロピーロス) + (aux_classification層の出力のクロスエントロピーロス×0.4)
 
 # Result
 
 | model | pixelwise accuracy | loss | mIoU |
 | ---- | ---- | ---- | ---- |
-| TwoLayerNet | 0.972 | 0.103 | 00 |
-| SimpleConvNet | 0.988 | 0.059 | 00 |
+| deeplabv3_resnet101 | 0.972 | 0.103 | 00 |
 
 # References
 
