@@ -14,15 +14,14 @@ tqdm
 
 # Datasets
 
-dataフォルダを作成し、torchvisonのMNISTデータセットをダウンロードします
+torchvisonのVOCSegmentationデータセットをダウンロードします
 
 ```python
-if not os.path.exists('./data'):
-    os.makedirs('./data')
+trainset = torchvision.datasets.VOCSegmentation(root='./data', image_set='train', transform=transform, target_transform=target_transform)
+testset = torchvision.datasets.VOCSegmentation(root='./data', image_set='val', transform=transform, target_transform=target_transform)
 
-trainset = torchvision.datasets.MNIST(root='./data', download=True, train=True, transform=transforms.ToTensor())
-testset = torchvision.datasets.MNIST(root='./data', download=True, train=False, transform=transforms.ToTensor())
 ```
+
 
 # Models
 
