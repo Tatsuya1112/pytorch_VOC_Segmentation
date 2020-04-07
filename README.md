@@ -60,7 +60,7 @@ torchvisionよりCOCO train2017で訓練済みのdeeplabv3_resnet101をダウン
 net = torchvision.models.segmentation.deeplabv3_resnet101(pretrained=True, progress=True, num_classes=21, aux_loss=True)
 ```
 
-classifier層とaux_classifier層の最後のConv2dの部分を初期化して学習し直します。
+classifier層とaux_classifier層の最後のConv2dの部分の重みを初期化して学習し直します。
 
 ```python
 def init_weights(m):
