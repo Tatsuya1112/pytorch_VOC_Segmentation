@@ -21,3 +21,7 @@ class AverageMeter(object):
 def init_weights(m):
     torch.nn.init.xavier_uniform(m.weight)
     m.bias.data.fill_(0.01)
+
+def lambda_epoch(epoch):
+    max_epoch = 30
+    return math.pow((1-epoch/max_epoch),0.9)
