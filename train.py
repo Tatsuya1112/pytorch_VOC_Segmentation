@@ -70,7 +70,9 @@ optimizer = optim.SGD([
 	{"params" : net.aux_classifier[4].parameters(), "lr" : 1e-2},
 ], momentum=args.momentum, weight_decay=args.weight_decay)
 
-scheduler = optim.lr_scheduler.LambdaLR(optimizer, lr_lambda=lambda_epoch)
+lambda1 = lambda epoch: epoch // 30
+lambda2 = lambda epoch: 0.95 ** epoch
+scheduler = LambdaLR(optimizer, lr_lambda=[lambda1, lambda2])
 
 for epoch in range(args.epochs):
 
