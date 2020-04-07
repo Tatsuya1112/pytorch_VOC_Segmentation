@@ -14,7 +14,7 @@ torchvision
 tqdm
 ```
 
-# Datasets
+# Dataset
 
 torchvisonのVOCSegmentationデータセットをダウンロードします
 
@@ -25,7 +25,7 @@ testset = torchvision.datasets.VOCSegmentation(root='./data', image_set='val', t
 ```
 
 
-# Models
+# Model
 
 COCO train2017で訓練済みのdeeplabv3_resnet101を用います。
 
@@ -81,7 +81,7 @@ aux_classification *0.4
 CrossEntropyLoss
 aux_loss = True
 
-# Results
+# Result
 
 | model | pixelwise accuracy | loss | mIoU |
 | ---- | ---- | ---- | ---- |
