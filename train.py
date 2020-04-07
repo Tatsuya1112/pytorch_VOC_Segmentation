@@ -40,6 +40,9 @@ target_transform = transforms.Compose([
 	Target_Preprocess()
 ])
 
+if not os.path.exists('./data'):
+    os.makedirs('./data')
+
 trainset = torchvision.datasets.VOCSegmentation(root='../pytorch_VOCSegmentation/data', image_set='train', transform=transform, target_transform=target_transform)
 testset = torchvision.datasets.VOCSegmentation(root='../pytorch_VOCSegmentation/data', image_set='val', transform=transform, target_transform=target_transform)
 
