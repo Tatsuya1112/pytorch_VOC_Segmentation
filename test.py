@@ -127,7 +127,7 @@ with torch.no_grad():
 			os.makedirs(args.img_folder)
 
 		for j in range(outputs.shape[0]):
-			out_path = args.img_folder+'/test/{:}_output.png'.format(i*args.batch_size+j)
+			out_path = args.img_folder+'/val/{:}_output.png'.format(i*args.batch_size+j)
 			out_arr = np.array(torch.max(outputs[j], dim=0)[1].cpu(), dtype='uint8')
 			out_img = Image.fromarray(out_arr, mode='P')
 			out_img.putpalette(args.palette_data)
