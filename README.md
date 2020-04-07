@@ -38,6 +38,20 @@ testset = torchvision.datasets.VOCSegmentation(root='./data', image_set='val', t
 
 ```
 
+# Preprocess
+
+``` python
+class Crop_128:
+	def __call__(self, x):
+		W, H = x.size
+		D = min(W, H)
+		x = x.crop(((W-D)/2, (H-D)/2, (W+D)/2, (H+D)/2))
+		x = x.resize((128, 128))
+		return x
+
+```
+
+128×128のサイズに画像を一律にクロップします。
 
 # Model
 
