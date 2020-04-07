@@ -11,7 +11,7 @@ import pandas as pd
 from visdom import Visdom
 from preprocess import *
 from utils import *
-from losses import *
+from loss import *
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--batch_size', default=2)
