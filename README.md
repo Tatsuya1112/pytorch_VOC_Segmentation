@@ -33,53 +33,60 @@ COCO train2017で訓練済みのdeeplabv3_resnet101を用います。
 net = torchvision.models.segmentation.deeplabv3_resnet101(pretrained=True, progress=True, num_classes=21, aux_loss=True)
 ```
 
-### TwoLayerNet
+## backbone
 
-2層の全結合層のみから成るモデル
-
-
-```
-----------------------------------------------------------------
-        Layer (type)               Output Shape         Param #
-================================================================
-            Linear-1                   [-1, 50]          39,250
-              ReLU-2                   [-1, 50]               0
-            Linear-3                   [-1, 10]             510
-================================================================
-Total params: 39,760
-Trainable params: 39,760
-Non-trainable params: 0
-----------------------------------------------------------------
-```
-
-### SimpleConvNet
-
-1層の畳み込み層と2層の全結合層から成るモデル
+## classifier
 
 ```
-----------------------------------------------------------------
-        Layer (type)               Output Shape         Param #
-================================================================
-            Conv2d-1           [-1, 30, 24, 24]             780
-              ReLU-2           [-1, 30, 24, 24]               0
-         MaxPool2d-3           [-1, 30, 12, 12]               0
-            Linear-4                  [-1, 100]         432,100
-              ReLU-5                  [-1, 100]               0
-            Linear-6                   [-1, 10]           1,010
-================================================================
-Total params: 433,890
-Trainable params: 433,890
-Non-trainable params: 0
-----------------------------------------------------------------
+DeepLabHead(
+  (0): ASPP(
+    (convs): ModuleList(
+      (0): Sequential(
+        (0): Conv2d(2048, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (1): ASPPConv(
+        (0): Conv2d(2048, 256, kernel_size=(3, 3), stride=(1, 1), padding=(12, 12), dilation=(12, 12), bias=False)
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (2): ASPPConv(
+        (0): Conv2d(2048, 256, kernel_size=(3, 3), stride=(1, 1), padding=(24, 24), dilation=(24, 24), bias=False)
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (3): ASPPConv(
+        (0): Conv2d(2048, 256, kernel_size=(3, 3), stride=(1, 1), padding=(36, 36), dilation=(36, 36), bias=False)
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (4): ASPPPooling(
+        (0): AdaptiveAvgPool2d(output_size=1)
+        (1): Conv2d(2048, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): ReLU()
+      )
+    )
+    (project): Sequential(
+      (0): Conv2d(1280, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+      (3): Dropout(p=0.5, inplace=False)
+    )
+  )
+  (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (3): ReLU()
+  (4): Conv2d(256, 21, kernel_size=(1, 1), stride=(1, 1))
+)
 ```
+
+## aux_classifier
 
 # Loss
 
-classification
-aux_classification *0.4
-
-CrossEntropyLoss
-aux_loss = True
+(classification層からの出力のクロスロピーロス)　+ (aux_classification層の出力のクロスエントロピーロス*0.4)
 
 # Result
 
