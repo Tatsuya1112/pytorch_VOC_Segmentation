@@ -1,0 +1,5 @@
+argparse
+numpy
+torch
+torchvision
+tqdm
