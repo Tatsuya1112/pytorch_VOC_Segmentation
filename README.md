@@ -27,17 +27,11 @@ testset = torchvision.datasets.VOCSegmentation(root='./data', image_set='val', t
 
 # Model
 
-COCO train2017で訓練済みのdeeplabv3_resnet101を用います。
+torchvisionよりCOCO train2017で訓練済みのdeeplabv3_resnet101をダウンロードします。
 
 ```python
 net = torchvision.models.segmentation.deeplabv3_resnet101(pretrained=True, progress=True, num_classes=21, aux_loss=True)
 ```
-
-## backbone
-
-## classifier
-
-## aux_classifier
 
 classifier層と、aux_classifier層の最後のConv2dの部分を初期化します。
 
@@ -51,8 +45,6 @@ net.aux_classifier[4] =  nn.Conv2d(256, 21, kernel_size=(1, 1), stride=(1, 1))
 net.classifier[4].apply(init_weights)
 net.aux_classifier[4].apply(init_weights)
 ```
-
-## aux_classifier
 
 # Loss
 
