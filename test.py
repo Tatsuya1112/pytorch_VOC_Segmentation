@@ -10,7 +10,7 @@ import argparse
 from collections import OrderedDict
 import pandas as pd
 from PIL import Image
-from losses import *
+from loss import *
 from preprocess import *
 from utils import *
 from models import *
