@@ -33,7 +33,7 @@ torchvisionよりCOCO train2017で訓練済みのdeeplabv3_resnet101をダウン
 net = torchvision.models.segmentation.deeplabv3_resnet101(pretrained=True, progress=True, num_classes=21, aux_loss=True)
 ```
 
-classifier層と、aux_classifier層の最後のConv2dの部分を初期化して、学習し直します。
+classifier層とaux_classifier層の最後のConv2dの部分を初期化して学習し直します。
 
 ```python
 def init_weights(m):
@@ -58,5 +58,5 @@ net.aux_classifier[4].apply(init_weights)
 
 # References
 
-ゼロから作るDeep Learning――Pythonで学ぶディープラーニングの理論と実装
-https://www.oreilly.co.jp/books/9784873117584/
+つくりながら学ぶ！PyTorchによる発展ディープラーニング
+https://book.mynavi.jp/ec/products/detail/id=104855
