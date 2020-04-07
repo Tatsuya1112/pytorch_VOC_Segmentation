@@ -12,7 +12,6 @@ from PIL import Image
 from loss import *
 from preprocess import *
 from utils import *
-from models import *
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--batch_size', default=3)
