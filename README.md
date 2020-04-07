@@ -58,5 +58,5 @@ net.aux_classifier[4].apply(init_weights)
 
 # References
 
-つくりながら学ぶ！PyTorchによる発展ディープラーニング
+つくりながら学ぶ！PyTorchによる発展ディープラーニング　
 https://book.mynavi.jp/ec/products/detail/id=104855
