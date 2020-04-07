@@ -30,7 +30,7 @@ tqdm
 
 # Dataset
 
-torchvisonのVOCSegmentationデータセットをダウンロードします
+torchvisonのVOCSegmentationデータセットをダウンロードします。
 
 ```python
 trainset = torchvision.datasets.VOCSegmentation(root='./data', image_set='train', transform=transform, target_transform=target_transform)
