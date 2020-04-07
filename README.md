@@ -79,7 +79,7 @@ net.aux_classifier[4].apply(init_weights)
 
 # Result
 
-| model | pixelwise accuracy | loss | mIoU |
+| model | pixel-wise accuracy | loss | mIoU |
 | ---- | ---- | ---- | ---- |
 | deeplabv3_resnet101 | 0.776 | 1.764 | 0.373 |
 
