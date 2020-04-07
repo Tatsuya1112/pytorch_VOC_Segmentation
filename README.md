@@ -6,7 +6,9 @@ Pascal VOC2012のデータをpytorchを用いてSemantic Segmentationします�
 
 # Requirements
 
-```
+```  
+argparse
+numpy
 torch
 torchvision
 tqdm
