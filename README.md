@@ -29,6 +29,10 @@ testset = torchvision.datasets.VOCSegmentation(root='./data', image_set='val', t
 
 COCO train2017で訓練済みのdeeplabv3_resnet101を用います。
 
+```python
+net = torchvision.models.segmentation.deeplabv3_resnet101(pretrained=True, progress=True, num_classes=21, aux_loss=True)
+```
+
 ### TwoLayerNet
 
 2層の全結合層のみから成るモデル
@@ -69,12 +73,20 @@ Non-trainable params: 0
 ----------------------------------------------------------------
 ```
 
+# Loss
+
+classification
+aux_classification *0.4
+
+CrossEntropyLoss
+aux_loss = True
+
 # Results
 
-| model | accuracy | cross-entropy-loss |
-| ---- | ---- | ---- |
-| TwoLayerNet | 0.972 | 0.103 |
-| SimpleConvNet | 0.988 | 0.059 |
+| model | pixelwise accuracy | loss | mIoU |
+| ---- | ---- | ---- | ---- |
+| TwoLayerNet | 0.972 | 0.103 | 00 |
+| SimpleConvNet | 0.988 | 0.059 | 00 |
 
 # References
 
