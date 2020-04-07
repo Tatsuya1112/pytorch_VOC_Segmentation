@@ -54,7 +54,7 @@ class Crop_128:
 
 # Model
 
-torchvisionよりCOCO train2017で訓練済みのdeeplabv3_resnet101をダウンロードします。
+torchvisionよりCOCO train2017で学習済みのdeeplabv3_resnet101をダウンロードします。
 
 ```python
 net = torchvision.models.segmentation.deeplabv3_resnet101(pretrained=True, progress=True, num_classes=21, aux_loss=True)
