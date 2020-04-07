@@ -11,6 +11,7 @@ pytorch_VOC_Segmentation/
 　├ loss.py
 　├ utils.py
 　├ preprocess.py
+　├ model.pth
 　├ data/
 　└ output/
 　    ├ train/
