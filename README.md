@@ -82,8 +82,3 @@ net.aux_classifier[4].apply(init_weights)
 | model | pixel-wise accuracy | loss | mIoU |
 | ---- | ---- | ---- | ---- |
 | deeplabv3_resnet101 | 0.776 | 1.764 | 0.373 |
-
-# References
-
-つくりながら学ぶ！PyTorchによる発展ディープラーニング　　　　　　　　　　
-https://book.mynavi.jp/ec/products/detail/id=104855
