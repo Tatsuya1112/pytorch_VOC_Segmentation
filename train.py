@@ -85,8 +85,6 @@ for epoch in range(args.epochs):
 
 
 	for i, data in enumerate(tqdm(trainloader)):
-		# if i>1:
-			# continue
 		inputs, targets = data[0].to(args.device), data[1].to(args.device)
 		outputs = net(inputs)
 		loss = criterion(outputs, targets)
@@ -118,8 +116,6 @@ for epoch in range(args.epochs):
 
 	with torch.no_grad():
 		for i, data in enumerate(tqdm(testloader)):
-			# if i>1:
-				# continue
 			inputs, targets = data[0].to(args.device), data[1].to(args.device)
 			outputs = net(inputs)
 			loss = criterion(outputs, targets)
