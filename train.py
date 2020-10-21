@@ -95,6 +95,9 @@ for epoch in range(args.epochs):
 		if args.is_aux:
 			outputs = outputs["out"]
 
+		train_loss.update(loss.item(), args.batch_size)
+		train_accuracy.update(torch.sum(torch.max(outputs, dim=1)[1]==targets).type(torch.float).item()/(targets.shape[0]*targets.shape[1]*targets.shape[2]), args.batch_size)
+
 		predicts = torch.max(outputs, dim=1)[1]
 		for j in range(args.n_classes):
 			train_tp[j]+=(torch.sum((predicts==j) & (targets==j)))
@@ -122,6 +125,9 @@ for epoch in range(args.epochs):
 
 			if args.is_aux:
 				outputs = outputs["out"]
+
+			test_loss.update(loss.item(), args.batch_size)
+			test_accuracy.update(torch.sum(torch.max(outputs, dim=1)[1]==targets).type(torch.float).item()/(targets.shape[0]*targets.shape[1]*targets.shape[2]), args.batch_size)
 
 			predicts = torch.max(outputs, dim=1)[1]
 			for j in range(args.n_classes):
